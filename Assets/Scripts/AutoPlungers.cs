@@ -17,8 +17,6 @@ public class AutoPlungers : MonoBehaviour
         if(ballList.Count > 0) {
             Timer();
         }
-        Debug.Log(timer);
-        //Debug.Log();
     }
 
     private void Timer() {
