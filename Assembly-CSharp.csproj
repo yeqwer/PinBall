@@ -37,10 +37,14 @@
   </PropertyGroup>
   <ItemGroup>
      <Compile Include="Assets\Scripts\PlungerScript.cs" />
-     <Compile Include="Assets\Scripts\FlipperScript.cs" />
-     <Compile Include="Assets\Scripts\AutoPlungers.cs" />
      <Compile Include="Assets\Scripts\RemoveScript.cs" />
+     <Compile Include="Assets\Scripts\AutoPlungers.cs" />
+     <Compile Include="Assets\Scripts\FlipperScript.cs" />
      <Compile Include="Assets\Scripts\SpawnScript.cs" />
+     <Compile Include="Assets\Scripts\TestVelocityScript.cs" />
+     <Compile Include="Assets\Scripts\ForcerScript.cs" />
+     <Compile Include="Assets\Scripts\TeleportScript.cs" />
+     <Compile Include="Assets\Scripts\CloserScript.cs" />
     <Reference Include="UnityEngine">
         <HintPath>C:\Program Files\Unity\Hub\Editor\2021.3.17f1\Editor\Data\Managed\UnityEngine\UnityEngine.dll</HintPath>
     </Reference>
