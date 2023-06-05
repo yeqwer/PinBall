@@ -7,7 +7,7 @@ public class AutoPlungers : MonoBehaviour
     public float maxPower = 100f;  
     public List<Rigidbody> ballList;
 
-    public float timer = 2f;
+    private float timer = 2f;
 
     void Start() {
         ballList = new List<Rigidbody>();

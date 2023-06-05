@@ -18,6 +18,7 @@ public class TeleportScript : MonoBehaviour
             } else if (timerEnd) {
                 SpawnAndForce();
                 teleport = false;
+                timerEnd = false;
             }
        }
     }
@@ -33,7 +34,7 @@ public class TeleportScript : MonoBehaviour
     private void SpawnAndForce() {
         Debug.Log("Spawn");
         var spawnedBall = Instantiate(ball, teletortTo.transform.position, teletortTo.transform.rotation);
-        spawnedBall.GetComponent<Rigidbody>().AddForce(teletortTo.transform.forward * powerForceAfterTeleport);
+        spawnedBall.GetComponent<Rigidbody>().AddForce(teletortTo.transform.forward * Random.Range((powerForceAfterTeleport - 15), (powerForceAfterTeleport + 15)));
     }
 
     private void OnTriggerEnter(Collider other) {
