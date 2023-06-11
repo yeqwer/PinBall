@@ -15,7 +15,6 @@ public class ForcerScript : MonoBehaviour
             if (forceHelper.canForce) {
             other.gameObject.GetComponent<Rigidbody>().AddForce(-Vector3.forward * powerForce);
             forceHelper.canForce = false;
-            Debug.Log("Force");
             }
         }
     }

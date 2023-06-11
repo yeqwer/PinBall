@@ -5,6 +5,12 @@ TagManager:
   serializedVersion: 2
   tags:
   - Ball
+  - Toggle
+  - Bumper
+  - Button
+  - Spinner
+  - Dumper
+  - Multiplier
   layers:
   - Default
   - TransparentFX

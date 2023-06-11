@@ -32,7 +32,6 @@ public class TeleportScript : MonoBehaviour
         }     
     }
     private void SpawnAndForce() {
-        Debug.Log("Spawn");
         var spawnedBall = Instantiate(ball, teletortTo.transform.position, teletortTo.transform.rotation);
         spawnedBall.GetComponent<Rigidbody>().AddForce(teletortTo.transform.forward * Random.Range((powerForceAfterTeleport - 15), (powerForceAfterTeleport + 15)));
     }

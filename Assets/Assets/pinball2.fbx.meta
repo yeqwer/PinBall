@@ -3,7 +3,122 @@ guid: ca4b33f82481bc74e9b3d1aaf919ed66
 ModelImporter:
   serializedVersion: 21300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bat - Plastic White
+    second: {fileID: 2100000, guid: 423663d955660394982ddc1cc21fe53d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bat - Plastic White.002
+    second: {fileID: 2100000, guid: a20031e126499f645b1eabc848e31a42, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bat - Rubber Blue
+    second: {fileID: 2100000, guid: 9aaeb792e5b630b4f857445487b2c3b9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bat - Rubber Blue.001
+    second: {fileID: 2100000, guid: 5047aba83d17b114ab59a51e666669df, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bulb - Filament Off
+    second: {fileID: 2100000, guid: fa8f04cb8986cc247aa0984a6bae363c, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bulb - Glass
+    second: {fileID: 2100000, guid: 76383add71c90f449b1dc2257b8ca458, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bumper - Cap Red
+    second: {fileID: 2100000, guid: 80f009067141cfc4592bb430165f657b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bumper - Plastic Red
+    second: {fileID: 2100000, guid: 1395f77d4ec15a6459d4c623c556ac5a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Bumper - Plastic White
+    second: {fileID: 2100000, guid: 0776d14c5ec094d40b16abe8a9d12417, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: DropTarget - Circles
+    second: {fileID: 2100000, guid: 01ef26652c43ae149b08fddda4c5dd23, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal - Silver
+    second: {fileID: 2100000, guid: 699dd39a8449ae3489a1fecc78a8e6c5, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal - Steel
+    second: {fileID: 2100000, guid: 3a1e2910749ce24478ceee178906e67d, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Metal - Steel with AO dirt
+    second: {fileID: 2100000, guid: cdae0885ceb461845bc49fc901aa980a, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plastic - Black Glossy
+    second: {fileID: 2100000, guid: dc3cedb69e6049f4b94650d42f9ef938, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plastic - Clear
+    second: {fileID: 2100000, guid: a036feea8c1ebbf47ba4492a7edcd5d4, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plastic - Clear.001
+    second: {fileID: 2100000, guid: a226614b7b1c5da45bb60c6ad649dbf9, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plastic - Print
+    second: {fileID: 2100000, guid: 42a7d2ecc6e65b4438cefcb9cefb5971, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plastic - Print.001
+    second: {fileID: 2100000, guid: f301bed20140e394d907432dbda2eea3, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Plastic - White Glossy
+    second: {fileID: 2100000, guid: f765db679f4fda34a8d5cdc3abff6528, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Rubber - Black
+    second: {fileID: 2100000, guid: 138078cb971c35b4dad2636559123f66, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Screw - Zinc with NM
+    second: {fileID: 2100000, guid: 070a80d12c74f1142bcacfba3b5fc241, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Target - Plastic Red
+    second: {fileID: 2100000, guid: 212f6dc77dcefdc4e831e2ab8e8ab28b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Target - Plastic White
+    second: {fileID: 2100000, guid: 288d6ee20c043e14a977ea507fdcefea, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
