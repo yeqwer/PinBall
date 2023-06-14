@@ -8,6 +8,7 @@ public class ButtonScript : MonoBehaviour
     public LightScript lightScript;
     public ScoreCounterScript scoreCounterScript;
     public float flashPower = 20f;
+    public float powerLamp = 0f;
 
     void Awake() {
         buttons = new List<GameObject>();
@@ -31,6 +32,6 @@ public class ButtonScript : MonoBehaviour
         butt.GetComponent<Animator>().SetTrigger("ResponseButt");
         
         var lamp = butt.transform.parent.GetComponentInChildren<Light>();
-        lightScript.StrobeLamp(lamp, lamp.intensity, flashPower);
+        lightScript.StrobeLamp(lamp, powerLamp, flashPower);
     }
 }

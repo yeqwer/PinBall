@@ -47,7 +47,10 @@ public class TouchObjectScript : MonoBehaviour
             }
             if (this.gameObject.CompareTag("Dumper")) {
                 dumperScript.CheckDumper(this.gameObject);
-                other.rigidbody.AddForce(explosionStrength * this.transform.right, ForceMode.Impulse);
+                Vector3 direction = this.transform.right;
+                float speed = other.rigidbody.velocity.magnitude;
+                //other.rigidbody.AddForce(explosionStrength * this.transform.right, ForceMode.Impulse); 
+                other.rigidbody.AddForce(direction.normalized * explosionStrength * speed, ForceMode.VelocityChange);
             }
         }
     }
