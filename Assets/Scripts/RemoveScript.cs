@@ -4,7 +4,9 @@ using UnityEngine;
 
 public class RemoveScript : MonoBehaviour
 {
+    
     public SpawnScript spawner;
+    public PunchScript punchScript;
     public CloserScript closer;
     public ScoreScript scoreScript;
 
@@ -12,6 +14,7 @@ public class RemoveScript : MonoBehaviour
         spawner = FindObjectOfType<SpawnScript>();
         closer = FindObjectOfType<CloserScript>();
         scoreScript = FindObjectOfType<ScoreScript>();
+        punchScript = FindObjectOfType<PunchScript>();
     }
     private void OnTriggerEnter(Collider other) {
         if(other.gameObject.CompareTag("Ball")) {
@@ -20,7 +23,10 @@ public class RemoveScript : MonoBehaviour
             
             scoreScript.ballCount -= 1;
             
-            if (scoreScript.ballCount != 0) {
+            if (punchScript.tilt) {
+                punchScript.tilt = false;
+                scoreScript.gameEnd = true; 
+            } else if (scoreScript.ballCount != 0) {
                 spawner.Spawner();
             } else {
                 scoreScript.gameEnd = true;

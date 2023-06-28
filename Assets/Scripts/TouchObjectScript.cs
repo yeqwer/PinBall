@@ -13,6 +13,9 @@ public class TouchObjectScript : MonoBehaviour
     
     public float explosionStrength = 100f;   
 
+    void Update() {
+
+    }
     void Awake() {
         toggleScript = FindObjectOfType<ToggleScript>();
         bumperScript = FindObjectOfType<BumperScript>();
@@ -49,7 +52,7 @@ public class TouchObjectScript : MonoBehaviour
                 dumperScript.CheckDumper(this.gameObject);
                 Vector3 direction = this.transform.right;
                 float speed = other.rigidbody.velocity.magnitude;
-                //other.rigidbody.AddForce(explosionStrength * this.transform.right, ForceMode.Impulse); 
+                //other.rigidbody.AddForce(explosionStrength * this.transform.right, ForceMode.Impulse);
                 other.rigidbody.AddForce(direction.normalized * explosionStrength * speed, ForceMode.VelocityChange);
             }
         }

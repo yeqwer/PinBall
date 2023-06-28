@@ -8,7 +8,7 @@ public class MultiplierScript : MonoBehaviour
     public List<GameObject> activeObjects = new List<GameObject>();
     public LightScript lightScript;
     public ScoreCounterScript scoreCounterScript;
-    public float flashPower = 8f;
+    public float flashPower = 20f;
 
     void Awake() {
         multipliers = new List<GameObject>();

@@ -11,6 +11,9 @@ TagManager:
   - Spinner
   - Dumper
   - Multiplier
+  - MainLight
+  - LFlipper
+  - RFlipper
   layers:
   - Default
   - TransparentFX

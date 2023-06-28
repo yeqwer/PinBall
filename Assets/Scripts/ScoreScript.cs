@@ -39,7 +39,7 @@ public class ScoreScript : MonoBehaviour
             textMission.color = Color.green;
             StartCoroutine(SetMissionCompelete());
         } else {
-            textMission.color = Color.white;
+            textMission.color = new Color(0, 255, 236, 255);
         }
         
         GameOverCheck();
