@@ -12,8 +12,11 @@ public class PlungerScript : MonoBehaviour
     public float min;
     public float maxPower = 100f;
     public Slider powerSlider;
+    public GameObject buttonPlunger;
     public List<Rigidbody> ballList;
-    public bool ballReady;
+    private bool ballReady;
+    private bool keySound = true;
+    public List<AudioClip> responseAudioEffect;
 
     void Start() {
         powerSlider.minValue = 0f;
@@ -30,13 +33,18 @@ public class PlungerScript : MonoBehaviour
         CheckInput();
         PullBall();  
         PullAfterTilt();
+        
     }
 
     void PullBall() {
+        var source = this.GetComponent<AudioSource>();
+
         if (ballReady) {
             powerSlider.gameObject.SetActive(true);
+            buttonPlunger.SetActive(true);
         } else {
             powerSlider.gameObject.SetActive(false);
+            buttonPlunger.SetActive(false);
         }
 
         powerSlider.value = power;
@@ -45,14 +53,25 @@ public class PlungerScript : MonoBehaviour
             ballReady = true;
 
             if(inputSystem.Player.Plunger.inProgress) {
+
+                if (keySound) {
+                    source.clip = responseAudioEffect[0]; 
+                    source.loop = true;
+                    source.Play();
+
+                    keySound = false;
+                }
+
                 if(power < maxPower) {
                     power += 50 * Time.deltaTime;
+                    source.pitch += Time.deltaTime;
+                } else {
+                    StartBall(source);
                 }
+                
             }
             else if(!inputSystem.Player.Plunger.inProgress) {
-                foreach (Rigidbody r in ballList) {
-                    r.AddForce(power * 0.3f * -Vector3.forward);
-                }
+                StartBall(source);
             }
         } else {
             ballReady = false;
@@ -60,13 +79,29 @@ public class PlungerScript : MonoBehaviour
         }
     }
 
+    void StartBall(AudioSource source) {
+        foreach (Rigidbody r in ballList) {
+                    r.AddForce(power * 0.3f * -Vector3.forward);
+                }
+                if (!keySound) {
+                    source.clip = responseAudioEffect[1]; 
+                    source.loop = false;
+                    source.pitch = 1;
+                    source.Play();
+
+                    keySound = true;
+                }
+    }
     
     void PullAfterTilt() {
+        var source = this.GetComponent<AudioSource>();
         if (punchScript.tilt) {
             if(ballList.Count > 0) {
                 foreach (Rigidbody r in ballList) {
                     r.AddForce(20 * -Vector3.forward);
                 }
+                keySound = false;
+                StartBall(source);
             }
         }        
     }

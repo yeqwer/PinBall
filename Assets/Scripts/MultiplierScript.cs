@@ -6,6 +6,7 @@ public class MultiplierScript : MonoBehaviour
 {
     public List<GameObject> multipliers;
     public List<GameObject> activeObjects = new List<GameObject>();
+    public List<AudioClip> responseAudioEffect;
     public LightScript lightScript;
     public ScoreCounterScript scoreCounterScript;
     public float flashPower = 20f;
@@ -21,10 +22,6 @@ public class MultiplierScript : MonoBehaviour
     }
 
     void Update() {
-        if (Input.GetKeyDown(KeyCode.G)) {
-            var active = ActivateAllMultipliers();  
-            Debug.Log(active.Count); 
-        }
     }
 
     public void CheckMultiplier(GameObject mult) {
@@ -76,9 +73,9 @@ public class MultiplierScript : MonoBehaviour
         }
     }
     
-
     private void ResponseMultiplier(GameObject mult, int index) {
         var lamp = mult.transform.parent.GetComponentInChildren<Light>();
+
         if (lamp.intensity == 0) {
             lightScript.EnablingLamp(lamp, flashPower);
             scoreCounterScript.MultiplierCountAdd(index);
@@ -86,6 +83,10 @@ public class MultiplierScript : MonoBehaviour
             lightScript.ShutDownLamp(lamp);
             scoreCounterScript.MultiplierCountRemove(index);
         }
+
+        var source = mult.GetComponent<AudioSource>();
+        source.clip = responseAudioEffect[Random.Range(0, responseAudioEffect.Count)]; 
+        source.Play();
        
     }
 }

@@ -53,6 +53,24 @@ public partial class @NewAction : IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""PunchL"",
+                    ""type"": ""Button"",
+                    ""id"": ""d8298db4-67bd-4a2d-8a10-3f506f8526b8"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PunchR"",
+                    ""type"": ""Button"",
+                    ""id"": ""d089066a-17c1-477d-89f2-dcc85fd52a54"",
+                    ""expectedControlType"": ""Button"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -110,6 +128,28 @@ public partial class @NewAction : IInputActionCollection2, IDisposable
                     ""action"": ""Plunger"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""1be3e085-8710-4132-a1d3-2017a05dc132"",
+                    ""path"": ""<Keyboard>/q"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PunchL"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b92490be-bdf0-42dc-8301-70d8c5a3b221"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PunchR"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -182,6 +222,8 @@ public partial class @NewAction : IInputActionCollection2, IDisposable
         m_Player_FlipperL = m_Player.FindAction("FlipperL", throwIfNotFound: true);
         m_Player_FlipperR = m_Player.FindAction("FlipperR", throwIfNotFound: true);
         m_Player_Plunger = m_Player.FindAction("Plunger", throwIfNotFound: true);
+        m_Player_PunchL = m_Player.FindAction("PunchL", throwIfNotFound: true);
+        m_Player_PunchR = m_Player.FindAction("PunchR", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -244,6 +286,8 @@ public partial class @NewAction : IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_FlipperL;
     private readonly InputAction m_Player_FlipperR;
     private readonly InputAction m_Player_Plunger;
+    private readonly InputAction m_Player_PunchL;
+    private readonly InputAction m_Player_PunchR;
     public struct PlayerActions
     {
         private @NewAction m_Wrapper;
@@ -251,6 +295,8 @@ public partial class @NewAction : IInputActionCollection2, IDisposable
         public InputAction @FlipperL => m_Wrapper.m_Player_FlipperL;
         public InputAction @FlipperR => m_Wrapper.m_Player_FlipperR;
         public InputAction @Plunger => m_Wrapper.m_Player_Plunger;
+        public InputAction @PunchL => m_Wrapper.m_Player_PunchL;
+        public InputAction @PunchR => m_Wrapper.m_Player_PunchR;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -269,6 +315,12 @@ public partial class @NewAction : IInputActionCollection2, IDisposable
                 @Plunger.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPlunger;
                 @Plunger.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPlunger;
                 @Plunger.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPlunger;
+                @PunchL.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunchL;
+                @PunchL.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunchL;
+                @PunchL.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunchL;
+                @PunchR.started -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunchR;
+                @PunchR.performed -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunchR;
+                @PunchR.canceled -= m_Wrapper.m_PlayerActionsCallbackInterface.OnPunchR;
             }
             m_Wrapper.m_PlayerActionsCallbackInterface = instance;
             if (instance != null)
@@ -282,6 +334,12 @@ public partial class @NewAction : IInputActionCollection2, IDisposable
                 @Plunger.started += instance.OnPlunger;
                 @Plunger.performed += instance.OnPlunger;
                 @Plunger.canceled += instance.OnPlunger;
+                @PunchL.started += instance.OnPunchL;
+                @PunchL.performed += instance.OnPunchL;
+                @PunchL.canceled += instance.OnPunchL;
+                @PunchR.started += instance.OnPunchR;
+                @PunchR.performed += instance.OnPunchR;
+                @PunchR.canceled += instance.OnPunchR;
             }
         }
     }
@@ -336,5 +394,7 @@ public partial class @NewAction : IInputActionCollection2, IDisposable
         void OnFlipperL(InputAction.CallbackContext context);
         void OnFlipperR(InputAction.CallbackContext context);
         void OnPlunger(InputAction.CallbackContext context);
+        void OnPunchL(InputAction.CallbackContext context);
+        void OnPunchR(InputAction.CallbackContext context);
     }
 }

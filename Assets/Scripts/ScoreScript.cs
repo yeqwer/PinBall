@@ -11,16 +11,19 @@ public class ScoreScript : MonoBehaviour
     public TextMeshPro textMission;
     public TextMeshPro textBall;
     public TextMeshPro gameOver;
-
     public int scoreCount = 0;
     public int multiplierCount = 1;
     public int buttonBonusCount = 0;
     public int ballCount = 3;
     public bool gameEnd = false;
     public bool missionComplete = false;
+    private PlayerInfoSaveScript playerInfoSaveScript;
+    public GameObject menu;
 
     void Start() {
         gameOver.gameObject.SetActive(false);
+        playerInfoSaveScript = FindObjectOfType<PlayerInfoSaveScript>();
+        menu = GameObject.FindGameObjectWithTag("Menu");
     }
 
     void Update() {
@@ -42,17 +45,28 @@ public class ScoreScript : MonoBehaviour
             textMission.color = new Color(0, 255, 236, 255);
         }
         
+        SetGreenScore();
         GameOverCheck();
     }
+    
+    void SetGreenScore() {
+        if (playerInfoSaveScript.GetPlayerScore() < scoreCount) {
+            textScore.color = Color.green; 
+        } else {
+            textScore.color = Color.white;
+        }
+    }
 
-    private IEnumerator SetMissionCompelete() {
+    IEnumerator SetMissionCompelete() {
         yield return new WaitForSeconds(10f);
         missionComplete = false;
     }
 
-    private void GameOverCheck() {
+    void GameOverCheck() {
         if (gameEnd) {
             gameOver.gameObject.SetActive(true);
+            playerInfoSaveScript.SetPlayerScore(scoreCount);
+            menu.SetActive(true);
         }
     }
 }

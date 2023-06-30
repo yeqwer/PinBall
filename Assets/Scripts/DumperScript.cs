@@ -7,6 +7,7 @@ public class DumperScript : MonoBehaviour
     public List<GameObject> dumpers;
     public LightScript lightScript;
     public ScoreCounterScript scoreCounterScript;
+    public List<AudioClip> responseAudioEffect; 
 
     void Awake() {
         dumpers = new List<GameObject>();
@@ -29,6 +30,10 @@ public class DumperScript : MonoBehaviour
 
     private void ResponseDumper(GameObject dump) {
         dump.GetComponentInParent<Animator>().SetBool("ResponseDump", true);
+
+        var source = dump.GetComponent<AudioSource>();
+        source.clip = responseAudioEffect[Random.Range(0, responseAudioEffect.Count)]; 
+        source.Play();
         //lightScript.ShutDownLamp(dump.transform.parent.GetComponentInChildren<Light>());
     }
     private IEnumerator ResponseDumperR(GameObject dump) {

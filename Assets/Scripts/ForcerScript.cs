@@ -6,6 +6,7 @@ public class ForcerScript : MonoBehaviour
 { 
     public float powerForce = 5f;
     public ForceHelperScript forceHelper;
+    public List<AudioClip> responseAudioEffect;
 
     void Awake() {
         forceHelper = this.GetComponentInParent<ForceHelperScript>();
@@ -15,6 +16,10 @@ public class ForcerScript : MonoBehaviour
             if (forceHelper.canForce) {
             other.gameObject.GetComponent<Rigidbody>().AddForce(-Vector3.forward * powerForce);
             forceHelper.canForce = false;
+
+            var source = this.GetComponent<AudioSource>();
+            source.clip = responseAudioEffect[Random.Range(0, responseAudioEffect.Count)]; 
+            source.Play();
             }
         }
     }

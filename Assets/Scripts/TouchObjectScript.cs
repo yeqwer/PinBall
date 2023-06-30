@@ -9,8 +9,7 @@ public class TouchObjectScript : MonoBehaviour
     public ButtonScript buttonScript;
     public SpinnerScript spinnerScript;
     public DumperScript dumperScript;
-    public MultiplierScript multiplierScript;
-    
+    public MultiplierScript multiplierScript;     
     public float explosionStrength = 100f;   
 
     void Update() {
@@ -28,6 +27,8 @@ public class TouchObjectScript : MonoBehaviour
         if (other.gameObject.CompareTag("Ball")) {
             if (this.gameObject.CompareTag("Spinner")) {
                 spinnerScript.CheckSpinner(this.gameObject);
+
+                
             }       
             if (this.gameObject.CompareTag("Multiplier")) {
                 multiplierScript.CheckMultiplier(this.gameObject);

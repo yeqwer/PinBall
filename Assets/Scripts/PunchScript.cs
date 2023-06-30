@@ -11,27 +11,37 @@ public class PunchScript : MonoBehaviour
     public float targetTime = 0.5f;
     private float timer = 0;
     public bool tilt = false;
+    public List<AudioClip> responseAudioEffect;
+    private InputController inputController;
+    private NewAction inputSystem;
+    private bool keySound = true;
 
     void Start() {
         startRotation = this.transform.eulerAngles;
         startGravity = Physics.gravity;
         targetGravity = targetRotation.z * 2;
+
+        inputController = FindObjectOfType<InputController>();
+        inputSystem = new NewAction();
     }
     void Update() {
         CheckTilt();
         ChangeRotation();
+        ChangeAudio();
+        //CheckInput();
+        inputSystem.Enable();
     }
 
     void CheckTilt() {
         if (!tilt) {
-            if (Input.GetKey(KeyCode.E)) {
+            if (inputSystem.Player.PunchR.inProgress) {
                 if (timer < targetTime) {
                     timer += Time.deltaTime;
                 } else {
                     tilt = true;
                 }
             }
-            else if (Input.GetKey(KeyCode.Q)) {
+            else if (inputSystem.Player.PunchL.inProgress) {
                 if (timer < targetTime) {
                     timer += Time.deltaTime;
                 } else {
@@ -45,16 +55,42 @@ public class PunchScript : MonoBehaviour
     }
 
     void ChangeRotation() {
-        if (Input.GetKey(KeyCode.E)) {   
+        
+        if (inputSystem.Player.PunchR.inProgress) {   
             this.transform.eulerAngles = startRotation + targetRotation;
             Physics.gravity = new Vector3(-targetGravity, startGravity.y, startGravity.z);
 
-        } else if (Input.GetKey(KeyCode.Q)) {
+        } else if (inputSystem.Player.PunchL.inProgress) {
             this.transform.eulerAngles = startRotation - targetRotation;
-            Physics.gravity = new Vector3(targetGravity, startGravity.y, startGravity.z);                
+            Physics.gravity = new Vector3(targetGravity, startGravity.y, startGravity.z);  
+
         } else {
             this.transform.eulerAngles = startRotation;
             Physics.gravity = startGravity;
+        }
+    }
+    void ChangeAudio() {
+        var source = this.GetComponent<AudioSource>();
+        if (inputSystem.Player.PunchR.inProgress | inputSystem.Player.PunchL.inProgress) {  
+            if (keySound) {
+                source.clip = responseAudioEffect[0];
+                source.Play();
+
+                keySound = false;
+            }  
+        } else if (!keySound){
+            source.clip = responseAudioEffect[1]; 
+            source.Play();
+
+            keySound = true;
+        }
+    }
+
+    void CheckInput() {
+        if (inputController.activeInput) {
+            inputSystem.Enable();
+        } else {
+            inputSystem.Disable();
         }
     }       
 }

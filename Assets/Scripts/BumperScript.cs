@@ -6,6 +6,7 @@ public class BumperScript : MonoBehaviour
 {
     public List<GameObject> bumpers;
     public LightScript lightScript;
+    public List<AudioClip> responseAudioEffect;
     public ScoreCounterScript scoreCounterScript;
     public float powerLamp = 8f;
 
@@ -32,10 +33,15 @@ public class BumperScript : MonoBehaviour
 
     private void ResponseBumper(GameObject bump) {
         bump.GetComponent<Animator>().SetBool("ResponseBump", true);
-        
+
         var lamp = bump.transform.parent.GetComponentInChildren<Light>();
         lightScript.StrobeLamp(lamp, powerLamp, flashPower);
+
+        var source = bump.GetComponent<AudioSource>();
+        source.clip = responseAudioEffect[Random.Range(0, responseAudioEffect.Count)]; 
+        source.Play();
     }
+
     private IEnumerator ResponseBumperR(GameObject bump) {
         yield return new WaitForSeconds(0.1f);
         bump.GetComponent<Animator>().SetBool("ResponseBump", false);

@@ -14,10 +14,15 @@ public class ShutdownScript : MonoBehaviour
     public Material emissionMaterial;
     public TextMeshPro gameStatus;
     public TextMeshPro ballCounter;
+    private AudioBackgroundScript audioBackgroundScript;
+    public AudioSource shutDownSource;
+    public List<AudioClip> responseAudioEffect;
+    private bool keySound = true;
 
     void Awake() {
         punchScript = FindObjectOfType<PunchScript>();
         inputController = FindObjectOfType<InputController>();
+        audioBackgroundScript = FindObjectOfType<AudioBackgroundScript>();
         touchObjectScript = new List<TouchObjectScript>(); 
         allLamp = new List<Light>();
     }
@@ -42,6 +47,14 @@ public class ShutdownScript : MonoBehaviour
             gameStatus.text = "TILT!";
             ballCounter.text = "X";
             inputController.activeInput = false;
+            audioBackgroundScript.volume = 0.05f;
+
+            if (keySound){
+                shutDownSource.clip = responseAudioEffect[0]; 
+                shutDownSource.Play();
+                keySound = false;
+            }
+            
             foreach (var touch in touchObjectScript) {
                 Destroy(touch);
             }
